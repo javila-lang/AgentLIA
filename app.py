@@ -1,14 +1,15 @@
-import os
+Aimport os
 import time
 import requests
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# --- VARIABLES DE ENTORNO (Se configuran en IBM Code Engine) ---
-API_KEY = os.getenv( "0dOeqGYOU9To8YVgy5J7Kqbd6GHIpufa5cVl6Ouun5XZ")
-SERVICE_URL = os.getenv("https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/272b8bbb-42a9-4fcf-b99e-3b0554d18cc4")
-AGENT_ID = os.getenv("61a88aba-f4cc-45c2-b75f-3cc15d982f19")
+# --- VARIABLES DE ENTORNO ---
+# Buscamos las variables por su NOMBRE (las que definiste en IBM Cloud)
+API_KEY = os.getenv("WXO_API_KEY")
+SERVICE_URL = os.getenv("WXO_SERVICE_URL")
+AGENT_ID = os.getenv("WXO_AGENT_ID")
 
 def get_iam_token():
     try:
