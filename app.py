@@ -1,15 +1,25 @@
-Aimport os
+import os
 import time
 import requests
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# --- VARIABLES DE ENTORNO ---
-# Buscamos las variables por su NOMBRE (las que definiste en IBM Cloud)
+# --- VARIABLES DE ENTORNO (Corregidas) ---
+# El código busca la "etiqueta" de la caja, no el contenido.
 API_KEY = os.getenv("WXO_API_KEY")
 SERVICE_URL = os.getenv("WXO_SERVICE_URL")
 AGENT_ID = os.getenv("WXO_AGENT_ID")
+
+# --- BLOQUE DE DIAGNÓSTICO (Esto saldrá en los logs) ---
+print("=========================================")
+print(" 🕵️‍♂️ INICIANDO DIAGNÓSTICO DE VARIABLES")
+print(f" 1. API KEY detectada:   {'✅ SI' if API_KEY else '❌ NO (Revisa WXO_API_KEY)'}")
+print(f" 2. SERVICE URL detectada: {'✅ SI' if SERVICE_URL else '❌ NO (Revisa WXO_SERVICE_URL)'}")
+print(f" 3. AGENT ID detectada:  {'✅ SI' if AGENT_ID else '❌ NO (Revisa WXO_AGENT_ID)'}")
+print("=========================================")
+
+# ... (El resto de tu código sigue igual: def get_iam_token etc.)
 
 def get_iam_token():
     try:
